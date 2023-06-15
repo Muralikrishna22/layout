@@ -4,11 +4,11 @@ const { NodeFederationPlugin, StreamingTargetPlugin } = require("@module-federat
 
 module.exports = {
     client: new ModuleFederationPlugin({
-        name: "remote2",
+        name: "layout",
         filename: "remoteEntry.js",
         remotes: {},
         exposes: {
-            './layout': './index'
+            './layout': './src/client/index'
         },
         shared: {
             ...deps,
@@ -24,12 +24,12 @@ module.exports = {
     }),
     server: [
         new NodeFederationPlugin({
-            name: "remote2",
+            name: "layout",
             filename: "remoteEntry.js",
             library: { type: "commonjs-module" },
             remotes: {},
             exposes: {
-                './layout': './index'
+                './layout': './src/server/index'
             },
             shared: {
                 ...deps,
@@ -44,7 +44,7 @@ module.exports = {
             },
         }),
         new StreamingTargetPlugin({
-            name: "remote2",
+            name: "layout",
             library: { type: "commonjs-module" },
             remotes: {},
 

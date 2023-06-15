@@ -7,7 +7,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /node_modules\/(?!@babel\/core)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -34,6 +34,7 @@ module.exports = {
         alias: {
             express: 'express',
         },
+        extensions: ['.js']
     },
 
     // externals: {

@@ -1,7 +1,7 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const sharedWebpackConfig = require("./webpack.shared");
-// const moduleFederationPlugin = require("./module-federation");
+const moduleFederationPlugin = require("./module-federation");
 
 module.exports = merge(sharedWebpackConfig, {
     output: {
@@ -9,7 +9,7 @@ module.exports = merge(sharedWebpackConfig, {
         filename: "[name].js",
         libraryTarget: "commonjs-module",
     },
-    target: 'node',
+    target: false,
     name: "server",
     entry: {
         main: [
@@ -17,7 +17,7 @@ module.exports = merge(sharedWebpackConfig, {
             path.resolve(__dirname, "../src/server"),
         ],
     },
-    // plugins: [
-    //     ...moduleFederationPlugin.server
-    // ],
+    plugins: [
+        ...moduleFederationPlugin.server
+    ],
 });
