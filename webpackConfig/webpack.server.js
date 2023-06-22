@@ -14,7 +14,7 @@ module.exports = merge(sharedWebpackConfig, {
     entry: {
         main: [
             "@babel/polyfill",
-            path.resolve(__dirname, "../src/server"),
+            path.resolve(__dirname, "../index.js"),
         ],
     },
     plugins: [

@@ -1,8 +1,7 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const sharedWebpackConfig = require("./webpack.shared");
-// const moduleFederationPlugin = require("./module-federation");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const moduleFederationPlugin = require("./module-federation");
 
 module.exports = merge(sharedWebpackConfig, {
     entry: {
@@ -16,10 +15,11 @@ module.exports = merge(sharedWebpackConfig, {
         path: path.resolve(__dirname, "../dist/client"),
         publicPath: "http://localhost:3002/client/",
     },
-    // plugins: [
-    //     moduleFederationPlugin.client,
-    //     // new HtmlWebPackPlugin({
-    //     //     template: "./src/index.html",
-    //     // }),
-    // ],
+
+    plugins: [
+        moduleFederationPlugin.client,
+        // new HtmlWebPackPlugin({
+        //     template: "./src/index.html",
+        // }),
+    ],
 });
